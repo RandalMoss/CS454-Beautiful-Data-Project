@@ -12,19 +12,20 @@ If you are using linux, download the other one
 
 import pywapi
 import pprint
-pp = pprint.PrettyPrinter(indent=4)
-
-#pp.pprint(result)
-
-#data that will be used in the code, location that will look into and unit system
-location = 'Rancho Cucamonga'
-unitsys = 'imperial'
-
-location = str(pywapi.get_location_ids(location))
-location_id = location[3:11]
-
-rs = pywapi.get_weather_from_yahoo(location_id, unitsys)
-
-print pp.pprint(rs)
-
-test = str(rs['location']['city'])
+def getWeatherData(zipcode):
+    pp = pprint.PrettyPrinter(indent=4)
+    
+    #pp.pprint(result)
+    
+    #data that will be used in the code, location that will look into and unit system
+#    location = 'Rancho Cucamonga'
+    unitsys = 'imperial'
+    
+#    location = str(pywapi.get_location_ids(location))
+#    location_id = location[3:11]
+    
+    rs = pywapi.get_weather_from_yahoo(zipcode, unitsys)
+    
+    print pp.pprint(rs)
+    
+    #test = str(rs['location']['city'])
