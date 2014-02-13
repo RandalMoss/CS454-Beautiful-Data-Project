@@ -1,13 +1,30 @@
-from lxml import html
-import requests
-class MyClass(object):
-    print ""
-    #pull down weather data
-    #only keep relevant info
-    page = requests.get('http://econpy.pythonanywhere.com/ex/001.html')
-    tree = html.fromstring(page.text)
-    print(tree)
-    #record zip code source (rancho cucamonga only for now)
-    #find all zip codes around a radius from the source
-    
-    #report all information to console
+"""
+This require you to get the pywapi library in order to execute this code.
+To download the library go to ->
+https://code.google.com/p/python-weather-api/
+-> Downloads -> Downloads
+And download the pywapi-0.3.7.tar.gz and install it
+If you are using linux, download the other one
+"""
+
+
+#91701 The area Code for Rancho Cucamonga
+
+import pywapi
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
+
+#pp.pprint(result)
+
+#data that will be used in the code, location that will look into and unit system
+location = 'Rancho Cucamonga'
+unitsys = 'imperial'
+
+location = str(pywapi.get_location_ids(location))
+location_id = location[3:11]
+
+rs = pywapi.get_weather_from_yahoo(location_id, unitsys)
+
+print pp.pprint(rs)
+
+test = str(rs['location']['city'])
