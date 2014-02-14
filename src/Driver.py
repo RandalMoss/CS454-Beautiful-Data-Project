@@ -1,10 +1,12 @@
 import Collect
 class Driver():
-    def __init__(self):
+    def run(self, path):
         print "Reading config.txt file"
-        self.readConfigFile()
-        source = self.info[0]
-        radius = self.info[1]
+        info = Driver.readConfigFile(path)
+        source = info[0]
+        radius = info[1]
+        print "Source zipcode is: " + source
+        print "Radius around source is " + radius
         print "Collect data from source weather station start..."
         Collect.getSensorData
         print "Collect data finished"
@@ -16,17 +18,15 @@ class Driver():
         for zipcode in zipcodes:
             Collect.getWeatherData(zipcode)
             
-            
-    def readConfigFile(self):
-        self.info = []
+    @staticmethod        
+    def readConfigFile(path):
+        info = []
         count = 0
-        f = open('../config.txt', 'r')
+        f = open(path, 'r')
         for line in f:
             stringArray = line.split()
-            self.info.insert(count, stringArray[2])
+            info.insert(count, stringArray[2])
             count += 1
         f.close()
-        
-        for line in self.info:
-            print line
-Driver()
+        return info
+#Driver()
