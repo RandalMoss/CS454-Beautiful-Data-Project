@@ -1,5 +1,5 @@
 import ZipcodeScraper
-import webDataHandler as wdh
+import WebWeatherCollection as wwc
 
 def getSensorData():
     f = open('../Jan14log.txt', 'r')
@@ -11,4 +11,4 @@ def getZipCodesAroundRadius(source, radius):
     ZipcodeScraper.getZipCodes(source, radius)
     
 def getWeatherData(zipcode):
-    wdh.main(zipcode)
+    wwc.getWeatherData(zipcode)

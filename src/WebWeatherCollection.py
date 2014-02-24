@@ -25,8 +25,7 @@ def getWeatherData(zipcode):
 #    location_id = location[3:11]
     
     rs = pywapi.get_weather_from_yahoo(zipcode, unitsys)
-#    No need to print for now
-#    print pp.pprint(rs)
+    
+    print pp.pprint(rs)
     
     #test = str(rs['location']['city'])
-    return rs
