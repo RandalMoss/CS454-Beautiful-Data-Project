@@ -18,5 +18,5 @@ def parseArguments():
 if __name__ == "__main__":
     config = defaultdict(list)
     args = parseArguments()
-    driver = Driver.Driver().run(args.path)
+    driver = Driver.Driver().run('C:\Users\yehch_000\Documents\PythonWorkSpace\CS454-Beautiful-Data-Project\config.txt')
     debug = args.debug
