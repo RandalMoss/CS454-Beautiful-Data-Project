@@ -18,4 +18,4 @@ finally:
     sock.close()
 
 print ("Sent:     {}").format(data)
-print ("Received: {}").format(received)
+print ("Received: {}").format(received) 
