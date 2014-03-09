@@ -11,7 +11,7 @@ class Driver():
         Collect.getSensorData
         print "Collect data finished"
         print "Gathering zipcodes from around source with radius " + str(radius)
-        zipcodes = Collect.ZipcodeScraper.getZipCodes(source, radius)
+        zipcodes = Collect.zipcodeScraper.getZipCodes(source, radius)
         print zipcodes
         print "Zipcode gathering complete"
         print "Getting weather data for each zipcode..."

@@ -1,4 +1,4 @@
-import ZipcodeScraper
+import zipcodeScraper
 import webDataHandler as wdh
 
 def getSensorData():
@@ -8,7 +8,7 @@ def getSensorData():
     f.close()
     
 def getZipCodesAroundRadius(source, radius):
-    ZipcodeScraper.getZipCodes(source, radius)
+    zipcodeScraper.getZipCodes(source, radius)
     
 def getWeatherData(zipcode):
     wdh.main(zipcode)
