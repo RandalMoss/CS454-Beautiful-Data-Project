@@ -66,13 +66,11 @@ def calcDistance(point1,point2):
 # a formula too long to type
 def calcOceanDistance(pointOrigin):
     coast=open('../OceanPoints.txt')
-    print (coast)
     coastline=coast.readlines()
     shoreMatrix=range(len(coastline))
     for lines in range(0, len(coastline)):
         shoreMatrix[lines]=(coastline[lines].rstrip().split(','))
-    print('\nDistance to Points, Longitude, Latitude:')
-    for i in range(0,len(coastline)):
+    for i in range(0,len(coastline)-1):
         # find distance
         oceanLon=float(shoreMatrix[i][1])
         oceanLat=float(shoreMatrix[i][2])
@@ -99,11 +97,13 @@ def calcOceanDistance(pointOrigin):
     if(theta1>=90 and theta2>=90):
         return distancePC
     elif(theta1<theta2):
-        distanceToOcean=(distancePC*math.sin(theta1))/(math.sin(90))
-        return distanceToOcean
+        deg1=(math.sin(math.radians(theta1)))
+        distanceToOcean=distancePC*deg1
+        return abs(distanceToOcean)
     elif(theta2<theta1):
-        distanceToOcean=(distancePC*math.sin(theta2))/(math.sin(90))
-        return distanceToOcean
+        deg2=(math.sin(math.radians(theta2)))
+        distanceToOcean=distancePC*deg2
+        return abs(distanceToOcean)
         
 # vector = < x2-x1, y2-y1 >
 def createVectors(point1,point2):
@@ -150,9 +150,11 @@ def overwrite(zipcode,a,b,c,d,e):
     line1s="".join(line1s)
     lines[0]=line1s
     lines = "".join(lines)
-    f = open("../91701.txt", "w")
+    f.close()
+    f = open("../"+zipcode+".txt", "w")
     f.write(lines)
     f.close()
 
 main()
+print "\nALL ZIPCODES UPDATED"
 time.sleep(10)
