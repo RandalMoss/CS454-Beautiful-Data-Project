@@ -39,7 +39,7 @@ def main():
         print('Calculated Distance >>> '+str(distance))
         altitude = findAltitude(locLat,locLon)
         print('Altitude >>> '+str(altitude))
-        deltaAlt = sourceAlt-altitude
+        deltaAlt =altitude-sourceAlt
         print('Altitude Difference >>> '+str(deltaAlt))
         dto = calcOceanDistance(pointOrigin)
         print('Distance to the Ocean >>> '+str(dto))
@@ -130,8 +130,6 @@ def calcAngle(vAB,vAC):
 def findAltitude(locLat,locLon):
     lati = locLat
     lngi = locLon
-    #reminder Long=E/W, Lat = N/S
-    # url_params completes the base url with the given latitude and longitude values
     ALT_URL_P1 = 'http://maps.googleapis.com/maps/api/elevation/json?'
     ALT_URL_P2 = "locations=%s,%s&sensor=%s" % (lati, lngi, "false")
     url= ALT_URL_P1 + ALT_URL_P2
@@ -155,7 +153,6 @@ def overwrite(zipcode,a,b,c,d,e):
     f = open("../91701.txt", "w")
     f.write(lines)
     f.close()
-    
 
 main()
 time.sleep(10)
